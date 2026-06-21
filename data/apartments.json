@@ -1,0 +1,206 @@
+{
+  "apartments": [
+    {
+      "id": "suffren-001",
+      "slug": "tour-eiffel-suffren",
+      "name": "Appartement Tour Eiffel",
+      "address": "21 Avenue de Suffren, Paris 7e",
+      "type": "T3",
+      "surface": 110,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "maxGuests": 4,
+      "image": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
+      "images": [
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"
+      ],
+      "wifi": {
+        "name": "OPTIMI_Suffren",
+        "password": "Welcome2024!"
+      },
+      "host": {
+        "name": "Jean-Marc Taouo",
+        "initials": "JM",
+        "phone": "+33612784932",
+        "email": "contactoptgroup@gmail.com"
+      },
+      "booking": {
+        "airbnbUrl": "https://airbnb.com/rooms/xxxxx",
+        "bookingUrl": "",
+        "directUrl": "",
+        "reviewUrl": "https://airbnb.com/rooms/xxxxx/reviews"
+      },
+      "checkin": {
+        "time": "15:00",
+        "flexibleEarly": true,
+        "earlyPrice": 30,
+        "instructions": [
+          "Récupérez la clé dans la boîte à clés au code 1234#",
+          "Entrez dans l'immeuble avec le code A5678",
+          "Prenez l'ascenseur jusqu'au 4ème étage",
+          "L'appartement est la porte de gauche"
+        ],
+        "accessCodes": {
+          "building": "A5678",
+          "keybox": "1234#",
+          "apartment": ""
+        }
+      },
+      "checkout": {
+        "time": "11:00",
+        "flexibleLate": true,
+        "latePrice": 40,
+        "instructions": [
+          "Rassemblez les draps et serviettes dans la machine à laver",
+          "Videz le réfrigérateur",
+          "Fermez toutes les fenêtres",
+          "Éteignez les lumières et la climatisation",
+          "Déposez les clés dans la boîte à clés"
+        ]
+      },
+      "rules": [
+        "🚭 Non-fumeur (intérieur et balcon)",
+        "🔇 Pas de bruit après 22h",
+        "🎉 Pas de fêtes ni d'événements",
+        "🐾 Animaux non autorisés",
+        "🗑️ Tri sélectif obligatoire"
+      ],
+      "neighborhood": {
+        "description": "Situé à deux pas de la Tour Eiffel, cet appartement vous place au cœur du Paris historique. Le quartier du Champ de Mars offre une atmosphère à la fois touristique et résidentielle.",
+        "places": [
+          { "icon": "🗼", "name": "Tour Eiffel", "distance": "5 min à pied", "address": "Champ de Mars" },
+          { "icon": "🚇", "name": "Métro Bir-Hakeim (L6)", "distance": "3 min à pied", "address": "Ligne 6" },
+          { "icon": "🚇", "name": "Métro La Motte-Picquet (L8,10)", "distance": "7 min à pied", "address": "Lignes 8, 10" },
+          { "icon": "🛒", "name": "Monoprix", "distance": "2 min à pied", "address": "Avenue de Suffren" },
+          { "icon": "💊", "name": "Pharmacie", "distance": "4 min à pied", "address": "Rue de Grenelle" },
+          { "icon": "🍽️", "name": "Restaurants", "distance": "Dans la rue", "address": "Nombreux choix" }
+        ]
+      },
+      "appliances": [
+        { "icon": "📺", "name": "TV & Netflix", "description": "Compte Netflix inclus. Code PIN: 0000" },
+        { "icon": "🧺", "name": "Machine à laver", "description": "Programme coton 40° recommandé. Lessive fournie sous l'évier." },
+        { "icon": "❄️", "name": "Climatisation", "description": "Télécommande sur la table de nuit. Température recommandée: 22°C" },
+        { "icon": "☕", "name": "Machine Nespresso", "description": "Capsules offertes. Réservoir à remplir si nécessaire." },
+        { "icon": "🍳", "name": "Cuisine équipée", "description": "Four, plaques induction, micro-ondes, lave-vaisselle" },
+        { "icon": "💇", "name": "Sèche-cheveux", "description": "Dans le tiroir de la salle de bain" }
+      ],
+      "services": {
+        "earlyCheckin": { "available": true, "price": 30, "description": "Check-in dès 11h" },
+        "lateCheckout": { "available": true, "price": 40, "description": "Check-out jusqu'à 14h" },
+        "cleaning": { "available": true, "price": 50, "description": "Ménage complet avec draps" },
+        "luggageStorage": { "available": true, "price": 0, "description": "Gratuit selon disponibilité" },
+        "airportTransfer": {
+          "available": true,
+          "cdg": 75,
+          "orly": 55,
+          "description": "Chauffeur privé"
+        }
+      },
+      "status": "active",
+      "createdAt": "2024-01-15",
+      "updatedAt": "2026-06-21"
+    },
+    {
+      "id": "moreau-002",
+      "slug": "bastille-moreau",
+      "name": "Appartement Bastille",
+      "address": "Rue Moreau, Paris 11e",
+      "type": "T2",
+      "surface": 45,
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "maxGuests": 2,
+      "image": "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80",
+      "wifi": {
+        "name": "OPTIMI_Moreau",
+        "password": "Bastille2024!"
+      },
+      "host": {
+        "name": "Jean-Marc Taouo",
+        "initials": "JM",
+        "phone": "+33612784932"
+      },
+      "booking": {
+        "airbnbUrl": "https://airbnb.com/rooms/yyyyy",
+        "reviewUrl": "https://airbnb.com/rooms/yyyyy/reviews"
+      },
+      "checkin": {
+        "time": "15:00",
+        "instructions": [
+          "Code immeuble: B1234",
+          "2ème étage, porte droite",
+          "Clé dans boîte aux lettres (code: 5678)"
+        ]
+      },
+      "checkout": {
+        "time": "11:00",
+        "instructions": [
+          "Remettre les clés dans la boîte aux lettres",
+          "Sortir les poubelles si besoin"
+        ]
+      },
+      "rules": [
+        "🚭 Non-fumeur",
+        "🔇 Pas de bruit après 22h",
+        "🎉 Pas de fêtes"
+      ],
+      "neighborhood": {
+        "description": "Au cœur du quartier animé de Bastille, proche de la Place de la Bastille et du Canal Saint-Martin.",
+        "places": [
+          { "icon": "🚇", "name": "Métro Bastille", "distance": "5 min à pied" },
+          { "icon": "🌊", "name": "Canal Saint-Martin", "distance": "10 min à pied" },
+          { "icon": "🍺", "name": "Bars & Restaurants", "distance": "Partout" }
+        ]
+      },
+      "status": "active"
+    }
+  ],
+  "globalSettings": {
+    "companyName": "OPT IM GROUP",
+    "companyLogo": "assets/images/logo.png",
+    "supportPhone": "+33612784932",
+    "supportEmail": "contactoptgroup@gmail.com",
+    "whatsappLink": "https://wa.me/33612784932",
+    "emergencyNumbers": {
+      "samu": "15",
+      "police": "17",
+      "pompiers": "18",
+      "europeEmergency": "112"
+    },
+    "defaultLanguage": "fr",
+    "availableLanguages": ["fr", "en", "es", "de", "it", "pt", "zh", "ja", "ar"],
+    "services": {
+      "earlyCheckin": {
+        "name": "Early Check-in",
+        "icon": "🕐",
+        "defaultPrice": 30
+      },
+      "lateCheckout": {
+        "name": "Late Checkout",
+        "icon": "🌙",
+        "defaultPrice": 40
+      },
+      "cleaning": {
+        "name": "Ménage supplémentaire",
+        "icon": "🧹",
+        "defaultPrice": 50
+      },
+      "airportTransfer": {
+        "name": "Transfert aéroport",
+        "icon": "🚗"
+      },
+      "luggage": {
+        "name": "Bagagerie",
+        "icon": "🧳",
+        "defaultPrice": 0
+      },
+      "experiences": {
+        "name": "Expériences",
+        "icon": "🎭"
+      }
+    }
+  },
+  "version": "1.0.0",
+  "lastUpdated": "2026-06-21"
+}
