@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>OPTIMI Guest App | Guide de Developpement Interactif</title>
+    <title>OPTIMI Guest App | Guide Technique Complet</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,17 +16,14 @@
             --bg-5: #222228;
             --border: #23232a;
             --border-2: #2f2f38;
-            --border-3: #3a3a45;
             --text: #f4f4f5;
             --muted: #a1a1aa;
             --dim: #71717a;
             --accent: #ff6b35;
-            --accent-2: #ffd166;
             --gold: #d4af37;
             --gold-light: #e8c547;
             --green: #10B981;
             --green-light: #34D399;
-            --green-dark: #059669;
             --orange: #f97316;
             --cyan: #06b6d4;
             --cyan-light: #22d3ee;
@@ -34,17 +31,11 @@
             --violet-light: #a78bfa;
             --red: #ef476f;
             --red-light: #f87171;
-            --premium: #9333ea;
-            --premium-light: #a855f7;
             --blue: #3b82f6;
-            --blue-light: #60a5fa;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -52,26 +43,11 @@
             color: var(--text);
             -webkit-font-smoothing: antialiased;
             line-height: 1.6;
-            min-height: 100vh;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            opacity: 0.02;
-            z-index: 0;
-            pointer-events: none;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        }
-
-        /* ========== HEADER ========== */
         .header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 70px;
             background: rgba(10, 10, 11, 0.95);
             backdrop-filter: blur(20px);
@@ -90,30 +66,23 @@
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             background: linear-gradient(135deg, var(--gold), var(--accent));
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
+            font-weight: 900;
         }
 
         .logo-text {
             font-weight: 800;
-            font-size: 18px;
-            letter-spacing: 0.05em;
+            font-size: 16px;
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .header-progress {
-            display: flex;
-            align-items: center;
-            gap: 16px;
         }
 
         .global-progress {
@@ -122,13 +91,8 @@
             gap: 12px;
         }
 
-        .global-progress-label {
-            font-size: 13px;
-            color: var(--muted);
-        }
-
         .global-progress-bar {
-            width: 200px;
+            width: 180px;
             height: 8px;
             background: var(--bg-4);
             border-radius: 100px;
@@ -147,113 +111,80 @@
             font-size: 14px;
             font-weight: 700;
             color: var(--green-light);
-            min-width: 45px;
         }
 
-        /* ========== NAVIGATION ========== */
         .nav {
             position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
+            top: 70px; left: 0; right: 0;
             background: var(--bg-2);
             border-bottom: 1px solid var(--border);
             z-index: 999;
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
         }
 
         .nav-inner {
             display: flex;
-            gap: 0;
             min-width: max-content;
             padding: 0 40px;
         }
 
         .nav-item {
-            padding: 16px 24px;
+            padding: 14px 20px;
             font-size: 14px;
             font-weight: 600;
             color: var(--muted);
             cursor: pointer;
             border-bottom: 3px solid transparent;
             transition: all 0.3s;
-            white-space: nowrap;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .nav-item:hover {
-            color: var(--text);
-            background: var(--bg-3);
-        }
+        .nav-item:hover { color: var(--text); background: var(--bg-3); }
+        .nav-item.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-        .nav-item.active {
-            color: var(--accent);
-            border-bottom-color: var(--accent);
-        }
-
-        .nav-item .nav-badge {
+        .nav-badge {
             padding: 2px 8px;
             border-radius: 100px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
         }
 
-        .nav-badge.live {
-            background: rgba(16, 185, 129, 0.2);
-            color: var(--green-light);
-        }
+        .nav-badge.live { background: rgba(16, 185, 129, 0.2); color: var(--green-light); }
+        .nav-badge.doc { background: rgba(6, 182, 212, 0.2); color: var(--cyan-light); }
 
-        .nav-badge.doc {
-            background: rgba(6, 182, 212, 0.2);
-            color: var(--cyan-light);
-        }
-
-        /* ========== MAIN CONTENT ========== */
         .main {
-            padding-top: 130px;
+            padding-top: 125px;
             min-height: 100vh;
-            position: relative;
-            z-index: 1;
         }
 
         .section {
             display: none;
-            padding: 40px;
-            max-width: 1400px;
+            padding: 32px;
+            max-width: 1200px;
             margin: 0 auto;
-            animation: fadeIn 0.4s ease;
         }
 
-        .section.active {
-            display: block;
-        }
+        .section.active { display: block; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ========== SECTION HEADER ========== */
         .section-header {
-            margin-bottom: 40px;
+            margin-bottom: 32px;
             text-align: center;
         }
 
         .section-tag {
             display: inline-block;
-            padding: 8px 20px;
-            font-size: 12px;
+            padding: 6px 16px;
+            font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             background: rgba(255, 107, 53, 0.1);
             color: var(--accent);
             border: 1px solid rgba(255, 107, 53, 0.3);
             border-radius: 100px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
         }
 
         .section-tag.green { background: rgba(16, 185, 129, 0.1); color: var(--green-light); border-color: rgba(16, 185, 129, 0.3); }
@@ -262,97 +193,43 @@
         .section-tag.gold { background: rgba(212, 175, 55, 0.1); color: var(--gold); border-color: rgba(212, 175, 55, 0.3); }
 
         .section-title {
-            font-size: clamp(32px, 5vw, 48px);
+            font-size: clamp(28px, 4vw, 40px);
             font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
-        .section-title .highlight { color: var(--accent); }
-        .section-title .highlight-green { color: var(--green-light); }
-        .section-title .highlight-cyan { color: var(--cyan-light); }
-        .section-title .highlight-gold { color: var(--gold); }
-        .section-title .highlight-violet { color: var(--violet-light); }
+        .section-title .hl { color: var(--accent); }
+        .section-title .hl-green { color: var(--green-light); }
+        .section-title .hl-cyan { color: var(--cyan-light); }
+        .section-title .hl-gold { color: var(--gold); }
+        .section-title .hl-violet { color: var(--violet-light); }
 
         .section-desc {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--muted);
-            max-width: 700px;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        /* ========== PROGRESS CARD ========== */
         .progress-card {
             background: var(--bg-2);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 32px;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
         }
 
         .progress-card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .progress-card-title {
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .progress-card-stats {
-            display: flex;
-            gap: 24px;
-        }
-
-        .progress-stat {
-            text-align: center;
-        }
-
-        .progress-stat-value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--green-light), var(--cyan));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .progress-stat-label {
-            font-size: 12px;
-            color: var(--dim);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .progress-bar-container {
             margin-bottom: 16px;
         }
 
-        .progress-bar-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .progress-bar-label {
-            font-size: 14px;
-            color: var(--muted);
-        }
-
-        .progress-bar-percent {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--green-light);
-        }
+        .progress-card-title { font-size: 18px; font-weight: 700; }
 
         .progress-bar {
-            height: 12px;
+            height: 10px;
             background: var(--bg-4);
             border-radius: 100px;
             overflow: hidden;
@@ -369,38 +246,29 @@
         .progress-bar-fill.violet { background: linear-gradient(90deg, var(--violet), var(--violet-light)); }
         .progress-bar-fill.gold { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
 
-        /* ========== CHECKLIST ========== */
-        .checklist {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .checklist-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 16px 20px;
-            background: var(--bg-3);
+        .step-item {
+            background: var(--bg-2);
             border: 1px solid var(--border);
             border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: background 0.3s;
         }
 
-        .checklist-item:hover {
-            border-color: var(--border-2);
-            background: var(--bg-4);
-        }
+        .step-header:hover { background: var(--bg-3); }
 
-        .checklist-item.completed {
-            border-color: var(--green);
-            background: rgba(16, 185, 129, 0.05);
-        }
+        .step-item.completed { border-left: 4px solid var(--green); }
 
-        .checklist-checkbox {
-            width: 24px;
-            height: 24px;
+        .step-checkbox {
+            width: 24px; height: 24px;
             border: 2px solid var(--border-2);
             border-radius: 6px;
             display: flex;
@@ -408,548 +276,284 @@
             justify-content: center;
             flex-shrink: 0;
             transition: all 0.3s;
+            cursor: pointer;
         }
 
-        .checklist-item.completed .checklist-checkbox {
+        .step-item.completed .step-checkbox {
             background: var(--green);
             border-color: var(--green);
         }
 
-        .checklist-checkbox svg {
-            width: 14px;
-            height: 14px;
+        .step-checkbox svg {
+            width: 14px; height: 14px;
             stroke: var(--bg);
             stroke-width: 3;
             opacity: 0;
-            transition: opacity 0.2s;
         }
 
-        .checklist-item.completed .checklist-checkbox svg {
-            opacity: 1;
+        .step-item.completed .step-checkbox svg { opacity: 1; }
+
+        .step-content { flex: 1; min-width: 0; }
+
+        .step-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--accent);
+            margin-bottom: 2px;
         }
 
-        .checklist-content {
-            flex: 1;
-        }
-
-        .checklist-title {
-            font-weight: 600;
+        .step-title {
+            font-weight: 700;
             font-size: 15px;
             margin-bottom: 4px;
-            transition: all 0.3s;
         }
 
-        .checklist-item.completed .checklist-title {
+        .step-item.completed .step-title {
             text-decoration: line-through;
             color: var(--muted);
         }
 
-        .checklist-desc {
+        .step-desc {
             font-size: 13px;
             color: var(--dim);
         }
 
-        .checklist-meta {
+        .step-tags {
             display: flex;
-            gap: 12px;
+            gap: 6px;
             margin-top: 8px;
-        }
-
-        .checklist-tag {
-            padding: 4px 10px;
-            border-radius: 100px;
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        .checklist-tag.priority { background: rgba(239, 71, 111, 0.2); color: var(--red-light); }
-        .checklist-tag.easy { background: rgba(16, 185, 129, 0.2); color: var(--green-light); }
-        .checklist-tag.medium { background: rgba(249, 115, 22, 0.2); color: var(--orange); }
-        .checklist-tag.hard { background: rgba(139, 92, 246, 0.2); color: var(--violet-light); }
-
-        /* ========== GRID LAYOUTS ========== */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        @media (max-width: 1200px) {
-            .grid-4 { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 900px) {
-            .grid-3 { grid-template-columns: 1fr; }
-            .grid-2 { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 640px) {
-            .grid-4 { grid-template-columns: 1fr; }
-            .header { padding: 0 20px; }
-            .section { padding: 24px 16px; }
-            .nav-inner { padding: 0 16px; }
-            .global-progress-bar { width: 100px; }
-        }
-
-        /* ========== CARDS ========== */
-        .card {
-            background: var(--bg-2);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px;
-            transition: all 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--border-2);
-            transform: translateY(-2px);
-        }
-
-        .card-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            background: var(--bg-4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 16px;
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .card-desc {
-            font-size: 14px;
-            color: var(--muted);
-            line-height: 1.5;
-        }
-
-        /* ========== SPEC CARDS ========== */
-        .spec-section {
-            margin-bottom: 40px;
-        }
-
-        .spec-section-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .spec-section-title::before {
-            content: '';
-            width: 4px;
-            height: 24px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-
-        .spec-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-        }
-
-        .spec-card {
-            background: var(--bg-3);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-        }
-
-        .spec-card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .spec-card-icon {
-            font-size: 24px;
-        }
-
-        .spec-card-title {
-            font-weight: 600;
-            font-size: 15px;
-        }
-
-        .spec-card-content {
-            font-size: 14px;
-            color: var(--muted);
-        }
-
-        .spec-card-content ul {
-            list-style: none;
-            margin-top: 8px;
-        }
-
-        .spec-card-content li {
-            padding: 4px 0;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .spec-card-content li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 12px;
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-        }
-
-        /* ========== TABLE ========== */
-        .table-container {
-            overflow-x: auto;
-            margin: 24px 0;
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 14px;
-        }
-
-        .table th, .table td {
-            padding: 16px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .table th {
-            font-weight: 700;
-            color: var(--muted);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            background: var(--bg-3);
-        }
-
-        .table tr:hover td {
-            background: var(--bg-3);
-        }
-
-        .table .price {
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            color: var(--gold);
-        }
-
-        .table .highlight-row {
-            background: rgba(16, 185, 129, 0.05);
-        }
-
-        .table .highlight-row td {
-            border-color: var(--green);
-        }
-
-        /* ========== BUTTONS ========== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 28px;
-            font-size: 15px;
-            font-weight: 600;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent), var(--gold));
-            color: var(--bg);
-            box-shadow: 0 8px 24px rgba(255, 107, 53, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(255, 107, 53, 0.4);
-        }
-
-        .btn-secondary {
-            background: var(--bg-4);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .btn-green {
-            background: linear-gradient(135deg, var(--green), var(--green-light));
-            color: var(--bg);
-        }
-
-        /* ========== STATS ROW ========== */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 16px;
-            margin: 24px 0;
-        }
-
-        .stat-box {
-            background: var(--bg-3);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .stat-box-value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-box-value.green {
-            background: linear-gradient(135deg, var(--green), var(--green-light));
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-
-        .stat-box-label {
-            font-size: 12px;
-            color: var(--dim);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 4px;
-        }
-
-        /* ========== TIMELINE ========== */
-        .timeline {
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--border);
-        }
-
-        .timeline-item {
-            position: relative;
-            padding-bottom: 32px;
-        }
-
-        .timeline-item:last-child {
-            padding-bottom: 0;
-        }
-
-        .timeline-marker {
-            position: absolute;
-            left: -40px;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: var(--bg-3);
-            border: 3px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .timeline-marker.done {
-            background: var(--green);
-            border-color: var(--green);
-            color: var(--bg);
-        }
-
-        .timeline-marker.active {
-            border-color: var(--accent);
-            color: var(--accent);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4); }
-            50% { box-shadow: 0 0 0 8px rgba(255, 107, 53, 0); }
-        }
-
-        .timeline-content {
-            background: var(--bg-3);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-        }
-
-        .timeline-title {
-            font-weight: 700;
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .timeline-date {
-            font-size: 13px;
-            color: var(--accent);
-            margin-bottom: 8px;
-        }
-
-        .timeline-desc {
-            font-size: 14px;
-            color: var(--muted);
-        }
-
-        /* ========== CTA SECTION ========== */
-        .cta-section {
-            background: linear-gradient(135deg, var(--bg-3), var(--bg-4));
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 48px;
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .cta-title {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 16px;
-        }
-
-        .cta-desc {
-            font-size: 18px;
-            color: var(--muted);
-            margin-bottom: 32px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
             flex-wrap: wrap;
         }
 
-        /* ========== OPTION CARDS ========== */
+        .step-tag {
+            padding: 3px 8px;
+            border-radius: 100px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .step-tag.priority { background: rgba(239, 71, 111, 0.2); color: var(--red-light); }
+        .step-tag.easy { background: rgba(16, 185, 129, 0.2); color: var(--green-light); }
+        .step-tag.medium { background: rgba(249, 115, 22, 0.2); color: var(--orange); }
+        .step-tag.hard { background: rgba(139, 92, 246, 0.2); color: var(--violet-light); }
+
+        .step-expand {
+            width: 28px; height: 28px;
+            border-radius: 6px;
+            background: var(--bg-4);
+            border: none;
+            color: var(--muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .step-expand:hover { background: var(--accent); color: white; }
+
+        .step-expand svg {
+            width: 14px; height: 14px;
+            transition: transform 0.3s;
+        }
+
+        .step-item.expanded .step-expand svg { transform: rotate(180deg); }
+
+        .step-docs {
+            display: none;
+            padding: 16px;
+            padding-left: 54px;
+            border-top: 1px solid var(--border);
+            background: var(--bg-3);
+        }
+
+        .step-item.expanded .step-docs { display: block; }
+
+        .docs-section { margin-bottom: 16px; }
+
+        .docs-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 8px;
+        }
+
+        .docs-text {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .prompt-block {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
+            border: 1px solid var(--violet);
+            border-radius: 10px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+
+        .prompt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .prompt-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--violet-light);
+        }
+
+        .prompt-copy {
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 600;
+            background: var(--violet);
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .prompt-copy:hover { background: var(--violet-light); }
+        .prompt-copy.copied { background: var(--green); }
+
+        .prompt-content {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--text);
+            background: var(--bg);
+            padding: 12px;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .code-block {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin: 12px 0;
+            overflow: hidden;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: var(--bg-4);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .code-lang {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--cyan);
+            font-weight: 600;
+        }
+
+        .code-copy {
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .code-copy:hover { background: var(--green); border-color: var(--green); color: white; }
+        .code-copy.copied { background: var(--green); border-color: var(--green); color: white; }
+
+        .code-content {
+            padding: 12px;
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .code-content pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--text);
+            margin: 0;
+            white-space: pre;
+        }
+
         .option-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin: 32px 0;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
         }
 
         .option-card {
             background: var(--bg-2);
             border: 2px solid var(--border);
-            border-radius: 20px;
-            padding: 28px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
+            border-radius: 16px;
+            padding: 24px;
             cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .option-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-2);
-        }
-
-        .option-card.featured {
-            border-color: var(--green);
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.2);
-        }
-
-        .option-card.gold-featured {
-            border-color: var(--gold);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-        }
+        .option-card:hover { transform: translateY(-3px); border-color: var(--border-2); }
+        .option-card.featured { border-color: var(--green); }
+        .option-card.gold-featured { border-color: var(--gold); }
 
         .option-letter {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 48px;
+            font-size: 40px;
             font-weight: 900;
             opacity: 0.2;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .option-card.featured .option-letter { color: var(--green); opacity: 0.4; }
         .option-card.gold-featured .option-letter { color: var(--gold); opacity: 0.4; }
 
-        .option-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .option-desc {
-            font-size: 14px;
-            color: var(--muted);
-            margin-bottom: 16px;
-        }
+        .option-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+        .option-desc { font-size: 13px; color: var(--muted); margin-bottom: 12px; }
 
         .option-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 14px;
+            display: inline-block;
+            padding: 4px 12px;
             border-radius: 100px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.03em;
         }
 
         .option-status.live { background: rgba(16, 185, 129, 0.2); color: var(--green-light); }
         .option-status.doc { background: rgba(6, 182, 212, 0.2); color: var(--cyan-light); }
 
         .option-progress {
-            margin-top: 16px;
-            padding-top: 16px;
+            margin-top: 14px;
+            padding-top: 14px;
             border-top: 1px solid var(--border);
         }
 
         .option-progress-bar {
-            height: 6px;
+            height: 5px;
             background: var(--bg-4);
             border-radius: 100px;
             overflow: hidden;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .option-progress-fill {
             height: 100%;
             border-radius: 100px;
-            transition: width 0.5s ease;
+            transition: width 0.5s;
         }
 
         .option-progress-fill.green { background: var(--green); }
@@ -960,39 +564,74 @@
         .option-progress-text {
             display: flex;
             justify-content: space-between;
-            font-size: 12px;
+            font-size: 11px;
             color: var(--dim);
         }
 
-        /* ========== FOOTER ========== */
-        .footer {
+        .cta-section {
+            background: var(--bg-3);
+            border: 1px solid var(--border);
+            border-radius: 20px;
             padding: 40px;
             text-align: center;
-            border-top: 1px solid var(--border);
-            margin-top: 60px;
+            margin-top: 32px;
         }
 
-        .footer-text {
+        .cta-title { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
+        .cta-desc { font-size: 15px; color: var(--muted); margin-bottom: 20px; }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
             font-size: 14px;
-            color: var(--dim);
-        }
-
-        .footer-text a {
-            color: var(--accent);
+            font-weight: 600;
+            border-radius: 10px;
             text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
         }
 
-        .footer-text a:hover {
-            text-decoration: underline;
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            color: var(--bg);
         }
 
-        /* ========== RESET BUTTON ========== */
+        .btn-primary:hover { transform: translateY(-2px); }
+
+        .btn-secondary {
+            background: var(--bg-4);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+        .footer {
+            padding: 32px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer-text { font-size: 13px; color: var(--dim); }
+        .footer-text a { color: var(--accent); text-decoration: none; }
+
         .reset-btn {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 48px;
-            height: 48px;
+            bottom: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: var(--bg-4);
             border: 1px solid var(--border);
@@ -1005,1008 +644,862 @@
             transition: all 0.3s;
         }
 
-        .reset-btn:hover {
-            background: var(--red);
-            border-color: var(--red);
-            color: white;
-        }
+        .reset-btn:hover { background: var(--red); border-color: var(--red); color: white; }
 
-        .reset-btn svg {
-            width: 20px;
-            height: 20px;
+        @media (max-width: 768px) {
+            .header { padding: 0 16px; }
+            .section { padding: 20px 16px; }
+            .nav-inner { padding: 0 16px; }
+            .global-progress-bar { width: 100px; }
+            .step-docs { padding-left: 16px; }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
     <header class="header">
         <div class="logo">
             <div class="logo-icon">O</div>
-            <span class="logo-text">OPTIMI GUEST APP</span>
+            <span class="logo-text">OPTIMI GUEST</span>
         </div>
-        <div class="header-progress">
-            <div class="global-progress">
-                <span class="global-progress-label">Progression globale</span>
-                <div class="global-progress-bar">
-                    <div class="global-progress-fill" id="globalProgressFill" style="width: 0%"></div>
-                </div>
-                <span class="global-progress-text" id="globalProgressText">0%</span>
+        <div class="global-progress">
+            <div class="global-progress-bar">
+                <div class="global-progress-fill" id="globalFill" style="width: 0%"></div>
             </div>
+            <span class="global-progress-text" id="globalText">0%</span>
         </div>
     </header>
 
-    <!-- NAVIGATION -->
     <nav class="nav">
         <div class="nav-inner">
-            <div class="nav-item active" data-section="overview">
-                Vue d'ensemble
-            </div>
-            <div class="nav-item" data-section="option-a">
-                Option A <span class="nav-badge live">LIVE</span>
-            </div>
-            <div class="nav-item" data-section="option-b">
-                Option B <span class="nav-badge doc">Supabase</span>
-            </div>
-            <div class="nav-item" data-section="option-c">
-                Option C <span class="nav-badge doc">Benchmark</span>
-            </div>
-            <div class="nav-item" data-section="option-d">
-                Option D <span class="nav-badge doc">SaaS</span>
-            </div>
-            <div class="nav-item" data-section="roadmap">
-                Roadmap
-            </div>
+            <div class="nav-item active" data-section="overview">Vue d'ensemble</div>
+            <div class="nav-item" data-section="option-a">Option A <span class="nav-badge live">LIVE</span></div>
+            <div class="nav-item" data-section="option-b">Option B <span class="nav-badge doc">Supabase</span></div>
+            <div class="nav-item" data-section="option-c">Option C <span class="nav-badge doc">Benchmark</span></div>
+            <div class="nav-item" data-section="option-d">Option D <span class="nav-badge doc">SaaS</span></div>
         </div>
     </nav>
 
-    <!-- MAIN CONTENT -->
     <main class="main">
-        <!-- ============ OVERVIEW SECTION ============ -->
         <section class="section active" id="overview">
             <div class="section-header">
-                <span class="section-tag">Projet Innovation 2026</span>
-                <h1 class="section-title">Guide de Developpement <span class="highlight">OPTIMI Guest App</span></h1>
-                <p class="section-desc">
-                    Livret d'accueil digital pour toute la flotte d'appartements en conciergerie.
-                    Suivez votre progression et choisissez votre niveau d'ambition.
-                </p>
+                <span class="section-tag">Guide Technique Complet</span>
+                <h1 class="section-title">OPTIMI <span class="hl">Guest App</span></h1>
+                <p class="section-desc">Documentation technique avec prompts copiables pour Claude. Cliquez sur une etape pour voir le code.</p>
             </div>
 
-            <!-- Global Progress Card -->
-            <div class="progress-card">
-                <div class="progress-card-header">
-                    <h3 class="progress-card-title">Progression du Projet</h3>
-                    <div class="progress-card-stats">
-                        <div class="progress-stat">
-                            <div class="progress-stat-value" id="totalCompleted">0</div>
-                            <div class="progress-stat-label">Taches terminees</div>
-                        </div>
-                        <div class="progress-stat">
-                            <div class="progress-stat-value" id="totalTasks">0</div>
-                            <div class="progress-stat-label">Total taches</div>
-                        </div>
-                    </div>
-                </div>
-                <div id="optionProgressBars"></div>
-            </div>
-
-            <!-- Option Cards -->
             <div class="option-cards">
                 <div class="option-card featured" onclick="navigateTo('option-a')">
                     <div class="option-letter">A</div>
                     <div class="option-title">HTML Statique</div>
-                    <div class="option-desc">1 fichier par appartement. Simple, gratuit, deploye sur Vercel. Solution immediate.</div>
+                    <div class="option-desc">MVP deploye. Zero cout.</div>
                     <span class="option-status live">LIVE</span>
                     <div class="option-progress">
-                        <div class="option-progress-bar">
-                            <div class="option-progress-fill green" id="progressA" style="width: 0%"></div>
-                        </div>
-                        <div class="option-progress-text">
-                            <span id="progressAText">0/0 etapes</span>
-                            <span id="progressAPercent">0%</span>
-                        </div>
+                        <div class="option-progress-bar"><div class="option-progress-fill green" id="prgA"></div></div>
+                        <div class="option-progress-text"><span id="prgAT">0/0</span><span id="prgAP">0%</span></div>
                     </div>
                 </div>
                 <div class="option-card" onclick="navigateTo('option-b')">
-                    <div class="option-letter" style="color: var(--cyan);">B</div>
-                    <div class="option-title">Supabase + Dashboard</div>
-                    <div class="option-desc">Base de donnees + Admin Dashboard. Modifiable sans code. Scalable.</div>
-                    <span class="option-status doc">Documente</span>
+                    <div class="option-letter" style="color:var(--cyan)">B</div>
+                    <div class="option-title">Supabase + Admin</div>
+                    <div class="option-desc">Database + Dashboard admin.</div>
+                    <span class="option-status doc">Doc</span>
                     <div class="option-progress">
-                        <div class="option-progress-bar">
-                            <div class="option-progress-fill cyan" id="progressB" style="width: 0%"></div>
-                        </div>
-                        <div class="option-progress-text">
-                            <span id="progressBText">0/0 etapes</span>
-                            <span id="progressBPercent">0%</span>
-                        </div>
+                        <div class="option-progress-bar"><div class="option-progress-fill cyan" id="prgB"></div></div>
+                        <div class="option-progress-text"><span id="prgBT">0/0</span><span id="prgBP">0%</span></div>
                     </div>
                 </div>
                 <div class="option-card" onclick="navigateTo('option-c')">
-                    <div class="option-letter" style="color: var(--violet);">C</div>
+                    <div class="option-letter" style="color:var(--violet)">C</div>
                     <div class="option-title">SaaS Externe</div>
-                    <div class="option-desc">Duve, Chekin, Hostaway. Benchmark complet realise. Solution rapide mais couteuse.</div>
+                    <div class="option-desc">Duve, Chekin benchmark.</div>
                     <span class="option-status doc">Benchmark</span>
                     <div class="option-progress">
-                        <div class="option-progress-bar">
-                            <div class="option-progress-fill violet" id="progressC" style="width: 0%"></div>
-                        </div>
-                        <div class="option-progress-text">
-                            <span id="progressCText">0/0 etapes</span>
-                            <span id="progressCPercent">0%</span>
-                        </div>
+                        <div class="option-progress-bar"><div class="option-progress-fill violet" id="prgC"></div></div>
+                        <div class="option-progress-text"><span id="prgCT">0/0</span><span id="prgCP">0%</span></div>
                     </div>
                 </div>
                 <div class="option-card gold-featured" onclick="navigateTo('option-d')">
-                    <div class="option-letter" style="color: var(--gold);">D</div>
-                    <div class="option-title">SaaS Custom OPTIMI</div>
-                    <div class="option-desc">Plateforme white-label vendable a d'autres conciergeries. Revenus passifs.</div>
-                    <span class="option-status doc">Vision Long Terme</span>
+                    <div class="option-letter" style="color:var(--gold)">D</div>
+                    <div class="option-title">SaaS Custom</div>
+                    <div class="option-desc">Plateforme vendable. 50K/an.</div>
+                    <span class="option-status doc">Vision</span>
                     <div class="option-progress">
-                        <div class="option-progress-bar">
-                            <div class="option-progress-fill gold" id="progressD" style="width: 0%"></div>
-                        </div>
-                        <div class="option-progress-text">
-                            <span id="progressDText">0/0 etapes</span>
-                            <span id="progressDPercent">0%</span>
-                        </div>
+                        <div class="option-progress-bar"><div class="option-progress-fill gold" id="prgD"></div></div>
+                        <div class="option-progress-text"><span id="prgDT">0/0</span><span id="prgDP">0%</span></div>
                     </div>
                 </div>
             </div>
 
-            <!-- Stats -->
-            <div class="stats-row">
-                <div class="stat-box">
-                    <div class="stat-box-value green">PWA</div>
-                    <div class="stat-box-label">Installable</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-box-value">10+</div>
-                    <div class="stat-box-label">Langues</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-box-value green">0 EUR</div>
-                    <div class="stat-box-label">Option A</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-box-value">50K EUR</div>
-                    <div class="stat-box-label">Potentiel SaaS/an</div>
-                </div>
-            </div>
-
-            <!-- CTA -->
             <div class="cta-section">
-                <h2 class="cta-title">Pret a commencer ?</h2>
-                <p class="cta-desc">L'Option A est deja deployee. Explorez les autres options pour faire evoluer votre solution.</p>
+                <h2 class="cta-title">Comment utiliser ce guide</h2>
+                <p class="cta-desc">Cliquez sur une etape, copiez le prompt et collez-le dans Claude.</p>
                 <div class="cta-buttons">
-                    <a href="https://optimi-guest-app.vercel.app" target="_blank" class="btn btn-primary">
-                        Voir la Demo Live
-                    </a>
-                    <a href="https://github.com/contactoptgroup-creator/optimi-guest-app" target="_blank" class="btn btn-secondary">
-                        Code Source GitHub
-                    </a>
+                    <a href="https://optimi-guest-app.vercel.app" target="_blank" class="btn btn-primary">Demo Live</a>
+                    <a href="https://github.com/contactoptgroup-creator/optimi-guest-app" target="_blank" class="btn btn-secondary">GitHub</a>
                 </div>
             </div>
         </section>
 
-        <!-- ============ OPTION A SECTION ============ -->
         <section class="section" id="option-a">
             <div class="section-header">
-                <span class="section-tag green">Option A - Deployee</span>
-                <h1 class="section-title">Solution <span class="highlight-green">HTML Statique</span></h1>
-                <p class="section-desc">
-                    MVP fonctionnel, deploye et accessible maintenant. Zero cout mensuel, mise en place immediate.
-                </p>
+                <span class="section-tag green">Option A</span>
+                <h1 class="section-title">Solution <span class="hl-green">HTML Statique</span></h1>
+                <p class="section-desc">MVP deploye, zero cout mensuel.</p>
             </div>
-
-            <!-- Progress Card -->
             <div class="progress-card">
                 <div class="progress-card-header">
-                    <h3 class="progress-card-title">Progression Option A</h3>
+                    <span class="progress-card-title">Progression</span>
+                    <span id="optAPct">0%</span>
                 </div>
-                <div class="progress-bar-container">
-                    <div class="progress-bar-info">
-                        <span class="progress-bar-label">Etapes completees</span>
-                        <span class="progress-bar-percent" id="optionAPercent">0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-bar-fill" id="optionABar" style="width: 0%"></div>
-                    </div>
-                </div>
+                <div class="progress-bar"><div class="progress-bar-fill" id="optABar"></div></div>
             </div>
-
-            <!-- Cahier des Charges -->
-            <div class="spec-section">
-                <h3 class="spec-section-title">Cahier des Charges</h3>
-                <div class="spec-grid">
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">🎯</span>
-                            <span class="spec-card-title">Objectif</span>
-                        </div>
-                        <div class="spec-card-content">
-                            Creer une Guest App statique (1 fichier HTML par appartement) deployable gratuitement sur Vercel.
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">💰</span>
-                            <span class="spec-card-title">Budget</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>Hebergement: 0 EUR/mois (Vercel free)</li>
-                                <li>Domaine: ~12 EUR/an (optionnel)</li>
-                                <li>Maintenance: 0 EUR</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">⏱️</span>
-                            <span class="spec-card-title">Delai</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>Developpement: 1-2 jours</li>
-                                <li>Par appartement: 30 min</li>
-                                <li>Deploiement: 5 min</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">✅</span>
-                            <span class="spec-card-title">Fonctionnalites</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>WiFi (copie 1 clic)</li>
-                                <li>Check-in/out instructions</li>
-                                <li>Infos quartier & POI</li>
-                                <li>Services payants</li>
-                                <li>Multi-langues FR/EN</li>
-                                <li>PWA installable</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Plan d'Action -->
-            <div class="spec-section">
-                <h3 class="spec-section-title">Plan d'Action Step by Step</h3>
-                <div class="checklist" id="checklistA">
-                    <!-- Items will be populated by JS -->
-                </div>
-            </div>
-
-            <!-- CTA -->
-            <div class="cta-section">
-                <h2 class="cta-title">Option A en Action</h2>
-                <p class="cta-desc">Cette option est deja deployee et fonctionnelle. Testez-la maintenant.</p>
-                <div class="cta-buttons">
-                    <a href="https://optimi-guest-app.vercel.app" target="_blank" class="btn btn-green">
-                        Tester la Demo
-                    </a>
-                    <a href="https://github.com/contactoptgroup-creator/optimi-guest-app" target="_blank" class="btn btn-secondary">
-                        Voir le Code
-                    </a>
-                </div>
-            </div>
+            <div id="stepsA"></div>
         </section>
 
-        <!-- ============ OPTION B SECTION ============ -->
         <section class="section" id="option-b">
             <div class="section-header">
-                <span class="section-tag cyan">Option B - Supabase</span>
-                <h1 class="section-title">Solution <span class="highlight-cyan">Database + Admin</span></h1>
-                <p class="section-desc">
-                    Base de donnees PostgreSQL + Dashboard admin. Modification des appartements sans toucher au code.
-                </p>
+                <span class="section-tag cyan">Option B</span>
+                <h1 class="section-title">Solution <span class="hl-cyan">Supabase + Admin</span></h1>
+                <p class="section-desc">Gestion dynamique via dashboard.</p>
             </div>
-
-            <!-- Progress Card -->
             <div class="progress-card">
                 <div class="progress-card-header">
-                    <h3 class="progress-card-title">Progression Option B</h3>
+                    <span class="progress-card-title">Progression</span>
+                    <span id="optBPct">0%</span>
                 </div>
-                <div class="progress-bar-container">
-                    <div class="progress-bar-info">
-                        <span class="progress-bar-label">Etapes completees</span>
-                        <span class="progress-bar-percent" id="optionBPercent">0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-bar-fill cyan" id="optionBBar" style="width: 0%"></div>
-                    </div>
-                </div>
+                <div class="progress-bar"><div class="progress-bar-fill cyan" id="optBBar"></div></div>
             </div>
-
-            <!-- Cahier des Charges -->
-            <div class="spec-section">
-                <h3 class="spec-section-title">Cahier des Charges</h3>
-                <div class="spec-grid">
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">🎯</span>
-                            <span class="spec-card-title">Objectif</span>
-                        </div>
-                        <div class="spec-card-content">
-                            Migrer vers une architecture avec base de donnees pour gerer les appartements dynamiquement via un dashboard admin.
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">💰</span>
-                            <span class="spec-card-title">Budget</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>Supabase Free: 0 EUR/mois</li>
-                                <li>Supabase Pro: 25 EUR/mois</li>
-                                <li>Vercel: 0-20 EUR/mois</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">⏱️</span>
-                            <span class="spec-card-title">Delai</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>Setup Supabase: 1 jour</li>
-                                <li>Migration donnees: 1 jour</li>
-                                <li>Admin Dashboard: 3-5 jours</li>
-                                <li>Tests & Deploy: 1 jour</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">🛠️</span>
-                            <span class="spec-card-title">Stack Technique</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>Supabase (PostgreSQL)</li>
-                                <li>Supabase Auth</li>
-                                <li>Supabase Storage</li>
-                                <li>Row Level Security</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Architecture -->
-            <div class="spec-section">
-                <h3 class="spec-section-title">Architecture Technique</h3>
-                <div class="card" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; background: var(--bg-3);">
-                    <pre style="color: var(--muted); overflow-x: auto;">
-┌─────────────────────────────────────────────────────────┐
-│                      FRONTEND                            │
-├─────────────────────────────────────────────────────────┤
-│  Guest App (PWA)          │  Admin Dashboard            │
-│  - Chargement dynamique   │  - CRUD appartements        │
-│  - Multi-langues          │  - Stats & analytics        │
-└─────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────┐
-│                      SUPABASE                            │
-├─────────────────────────────────────────────────────────┤
-│  Database        │  Auth          │  Storage            │
-│  - apartments    │  - Admin users │  - Photos           │
-│  - bookings      │  - JWT tokens  │  - Documents        │
-│  - services      │                │                     │
-└─────────────────────────────────────────────────────────┘
-                    </pre>
-                </div>
-            </div>
-
-            <!-- Plan d'Action -->
-            <div class="spec-section">
-                <h3 class="spec-section-title">Plan d'Action Step by Step</h3>
-                <div class="checklist" id="checklistB">
-                    <!-- Items will be populated by JS -->
-                </div>
-            </div>
+            <div id="stepsB"></div>
         </section>
 
-        <!-- ============ OPTION C SECTION ============ -->
         <section class="section" id="option-c">
             <div class="section-header">
-                <span class="section-tag violet">Option C - Benchmark SaaS</span>
-                <h1 class="section-title">Comparatif <span class="highlight-violet">Solutions Externes</span></h1>
-                <p class="section-desc">
-                    Analyse complete des solutions SaaS existantes pour 30 appartements.
-                </p>
+                <span class="section-tag violet">Option C</span>
+                <h1 class="section-title">Benchmark <span class="hl-violet">SaaS Externes</span></h1>
+                <p class="section-desc">Analyse Duve, Chekin, Hostaway.</p>
             </div>
-
-            <!-- Progress Card -->
             <div class="progress-card">
                 <div class="progress-card-header">
-                    <h3 class="progress-card-title">Progression Option C</h3>
+                    <span class="progress-card-title">Progression</span>
+                    <span id="optCPct">0%</span>
                 </div>
-                <div class="progress-bar-container">
-                    <div class="progress-bar-info">
-                        <span class="progress-bar-label">Etapes completees</span>
-                        <span class="progress-bar-percent" id="optionCPercent">0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-bar-fill violet" id="optionCBar" style="width: 0%"></div>
-                    </div>
-                </div>
+                <div class="progress-bar"><div class="progress-bar-fill violet" id="optCBar"></div></div>
             </div>
-
-            <!-- Tableau Comparatif -->
-            <div class="spec-section">
-                <h3 class="spec-section-title">Tableau Comparatif</h3>
-                <div class="table-container">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Solution</th>
-                                <th>Prix/mois (30 apparts)</th>
-                                <th>Guest App</th>
-                                <th>Reservation</th>
-                                <th>Recommandation</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Duve</strong></td>
-                                <td class="price">~360 EUR</td>
-                                <td>Excellent</td>
-                                <td>Oui</td>
-                                <td style="color: var(--green);">Recommande</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Chekin</strong></td>
-                                <td class="price">~150 EUR</td>
-                                <td>Bon</td>
-                                <td>Non</td>
-                                <td>Budget</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Hostaway</strong></td>
-                                <td class="price">~600 EUR</td>
-                                <td>Basique</td>
-                                <td>Oui</td>
-                                <td>PMS Complet</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Guesty</strong></td>
-                                <td class="price">~900+ EUR</td>
-                                <td>Premium</td>
-                                <td>Oui</td>
-                                <td>Enterprise</td>
-                            </tr>
-                            <tr class="highlight-row">
-                                <td><strong style="color: var(--green);">Custom (Option D)</strong></td>
-                                <td class="price" style="color: var(--green);">~50 EUR</td>
-                                <td>Personnalise</td>
-                                <td>Oui</td>
-                                <td style="color: var(--gold);">Autonomie totale</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Cahier des Charges -->
-            <div class="spec-section">
-                <h3 class="spec-section-title">Cahier des Charges - Evaluation SaaS</h3>
-                <div class="spec-grid">
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">📋</span>
-                            <span class="spec-card-title">Criteres d'Evaluation</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>Prix par listing</li>
-                                <li>Qualite Guest App</li>
-                                <li>Integration reservations</li>
-                                <li>Support francophone</li>
-                                <li>Personnalisation</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">⚖️</span>
-                            <span class="spec-card-title">Avantages</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>Mise en place rapide</li>
-                                <li>Support inclus</li>
-                                <li>Mises a jour auto</li>
-                                <li>Pas de dev</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">⚠️</span>
-                            <span class="spec-card-title">Inconvenients</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>Cout recurrent eleve</li>
-                                <li>Dependance externe</li>
-                                <li>Personnalisation limitee</li>
-                                <li>Pas de white-label</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">💡</span>
-                            <span class="spec-card-title">Recommandation</span>
-                        </div>
-                        <div class="spec-card-content">
-                            Court terme: <strong>Chekin</strong> (150 EUR/mois)<br>
-                            Moyen terme: <strong>Duve</strong> (360 EUR/mois)<br>
-                            Long terme: <strong>Option D Custom</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Plan d'Action -->
-            <div class="spec-section">
-                <h3 class="spec-section-title">Plan d'Action - Selection SaaS</h3>
-                <div class="checklist" id="checklistC">
-                    <!-- Items will be populated by JS -->
-                </div>
-            </div>
+            <div id="stepsC"></div>
         </section>
 
-        <!-- ============ OPTION D SECTION ============ -->
         <section class="section" id="option-d">
             <div class="section-header">
-                <span class="section-tag gold">Option D - Vision SaaS</span>
-                <h1 class="section-title">Plateforme <span class="highlight-gold">OPTIMI Guest</span></h1>
-                <p class="section-desc">
-                    SaaS white-label vendable a d'autres conciergeries. Asset technologique + revenus passifs.
-                </p>
+                <span class="section-tag gold">Option D</span>
+                <h1 class="section-title">Plateforme <span class="hl-gold">OPTIMI Guest SaaS</span></h1>
+                <p class="section-desc">White-label vendable. 50K EUR/an potentiel.</p>
             </div>
-
-            <!-- Progress Card -->
             <div class="progress-card">
                 <div class="progress-card-header">
-                    <h3 class="progress-card-title">Progression Option D</h3>
+                    <span class="progress-card-title">Progression</span>
+                    <span id="optDPct">0%</span>
                 </div>
-                <div class="progress-bar-container">
-                    <div class="progress-bar-info">
-                        <span class="progress-bar-label">Etapes completees</span>
-                        <span class="progress-bar-percent" id="optionDPercent">0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-bar-fill gold" id="optionDBar" style="width: 0%"></div>
-                    </div>
-                </div>
+                <div class="progress-bar"><div class="progress-bar-fill gold" id="optDBar"></div></div>
             </div>
-
-            <!-- Stats -->
-            <div class="stats-row">
-                <div class="stat-box">
-                    <div class="stat-box-value green">5,000 EUR/an</div>
-                    <div class="stat-box-label">Economies vs Duve</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-box-value">50,000 EUR/an</div>
-                    <div class="stat-box-label">Revenus Potentiels</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-box-value green">~50 EUR/mois</div>
-                    <div class="stat-box-label">Cout Infrastructure</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-box-value">2-3 mois</div>
-                    <div class="stat-box-label">Developpement</div>
-                </div>
-            </div>
-
-            <!-- Cahier des Charges -->
-            <div class="spec-section">
-                <h3 class="spec-section-title">Cahier des Charges Complet</h3>
-                <div class="spec-grid">
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">🎯</span>
-                            <span class="spec-card-title">Vision</span>
-                        </div>
-                        <div class="spec-card-content">
-                            Creer OPTIMI Guest: plateforme SaaS complete que OPT IM GROUP peut utiliser et vendre a d'autres conciergeries.
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">💰</span>
-                            <span class="spec-card-title">Business Model</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>Starter: Gratuit (1 listing)</li>
-                                <li>Pro: 29 EUR/mois (10 listings)</li>
-                                <li>Business: 79 EUR/mois (30 listings)</li>
-                                <li>Enterprise: 199 EUR/mois (illimite)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">🛠️</span>
-                            <span class="spec-card-title">Stack Technique</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>Next.js / Nuxt.js (Frontend)</li>
-                                <li>Supabase (Backend)</li>
-                                <li>Stripe (Paiements)</li>
-                                <li>Vercel (Hosting)</li>
-                                <li>Multi-tenant architecture</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="spec-card">
-                        <div class="spec-card-header">
-                            <span class="spec-card-icon">🏆</span>
-                            <span class="spec-card-title">Avantages Competitifs</span>
-                        </div>
-                        <div class="spec-card-content">
-                            <ul>
-                                <li>Prix plus bas que Duve</li>
-                                <li>Support francophone natif</li>
-                                <li>Adapte marche francais</li>
-                                <li>White-label complet</li>
-                                <li>Personnalisation totale</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Phases de Dev -->
-            <div class="spec-section">
-                <h3 class="spec-section-title">Phases de Developpement</h3>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker done">1</div>
-                        <div class="timeline-content">
-                            <div class="timeline-title">Phase 1: Guest App MVP</div>
-                            <div class="timeline-date">2-4 semaines</div>
-                            <div class="timeline-desc">Page accueil, WiFi, check-in/out, infos quartier, multi-langues, PWA</div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">2</div>
-                        <div class="timeline-content">
-                            <div class="timeline-title">Phase 2: Admin Dashboard</div>
-                            <div class="timeline-date">2-4 semaines</div>
-                            <div class="timeline-desc">Auth admin, CRUD appartements, upload photos, generation QR codes</div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">3</div>
-                        <div class="timeline-content">
-                            <div class="timeline-title">Phase 3: Services & Upselling</div>
-                            <div class="timeline-date">2-4 semaines</div>
-                            <div class="timeline-desc">Catalogue services, demandes, notifications, paiement Stripe</div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">4</div>
-                        <div class="timeline-content">
-                            <div class="timeline-title">Phase 4: Reservation Directe</div>
-                            <div class="timeline-date">4-6 semaines</div>
-                            <div class="timeline-desc">Widget reservation, calendrier, sync iCal, paiement</div>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">5</div>
-                        <div class="timeline-content">
-                            <div class="timeline-title">Phase 5: Multi-tenant SaaS</div>
-                            <div class="timeline-date">4-6 semaines</div>
-                            <div class="timeline-desc">Inscription orga, plans, facturation, custom domains, white-label</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Plan d'Action -->
-            <div class="spec-section">
-                <h3 class="spec-section-title">Plan d'Action Detaille</h3>
-                <div class="checklist" id="checklistD">
-                    <!-- Items will be populated by JS -->
-                </div>
-            </div>
-        </section>
-
-        <!-- ============ ROADMAP SECTION ============ -->
-        <section class="section" id="roadmap">
-            <div class="section-header">
-                <span class="section-tag">Timeline Globale</span>
-                <h1 class="section-title">Roadmap <span class="highlight">2026-2027</span></h1>
-                <p class="section-desc">
-                    Vision complete du projet de la version MVP au lancement SaaS public.
-                </p>
-            </div>
-
-            <div class="timeline" style="max-width: 800px; margin: 40px auto;">
-                <div class="timeline-item">
-                    <div class="timeline-marker done">Q2</div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">Q2 2026 - MVP Lance</div>
-                        <div class="timeline-date">Avril - Juin 2026</div>
-                        <div class="timeline-desc">
-                            <ul style="margin-left: 16px; color: var(--muted);">
-                                <li>Prototype Guest App (Option A)</li>
-                                <li>Documentation complete</li>
-                                <li>Deploiement Vercel</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker active">Q3</div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">Q3 2026 - Option B</div>
-                        <div class="timeline-date">Juillet - Septembre 2026</div>
-                        <div class="timeline-desc">
-                            <ul style="margin-left: 16px; color: var(--muted);">
-                                <li>Migration Supabase</li>
-                                <li>Admin Dashboard basique</li>
-                                <li>Deploiement OPT IM GROUP interne</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">Q4</div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">Q4 2026 - Services</div>
-                        <div class="timeline-date">Octobre - Decembre 2026</div>
-                        <div class="timeline-desc">
-                            <ul style="margin-left: 16px; color: var(--muted);">
-                                <li>Services et upselling</li>
-                                <li>Paiement Stripe</li>
-                                <li>Multi-langues complet (10 langues)</li>
-                                <li>Beta avec 2-3 conciergeries</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">Q1</div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">Q1 2027 - Lancement SaaS</div>
-                        <div class="timeline-date">Janvier - Mars 2027</div>
-                        <div class="timeline-desc">
-                            <ul style="margin-left: 16px; color: var(--muted);">
-                                <li>Reservation directe</li>
-                                <li>Sync calendriers (iCal)</li>
-                                <li>Multi-tenant</li>
-                                <li>Lancement public SaaS</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-marker">Q2</div>
-                    <div class="timeline-content">
-                        <div class="timeline-title">Q2 2027 - Expansion</div>
-                        <div class="timeline-date">Avril - Juin 2027</div>
-                        <div class="timeline-desc">
-                            <ul style="margin-left: 16px; color: var(--muted);">
-                                <li>Channel Manager</li>
-                                <li>White-label complet</li>
-                                <li>API publique</li>
-                                <li>Marketing & acquisition</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA -->
-            <div class="cta-section">
-                <h2 class="cta-title">Pret a innover ?</h2>
-                <p class="cta-desc">Le MVP est live. La documentation est complete. A toi de choisir la prochaine etape.</p>
-                <div class="cta-buttons">
-                    <a href="https://optimi-guest-app.vercel.app" target="_blank" class="btn btn-primary">
-                        Demo Live
-                    </a>
-                    <a href="https://github.com/contactoptgroup-creator/optimi-guest-app" target="_blank" class="btn btn-secondary">
-                        GitHub
-                    </a>
-                </div>
-            </div>
+            <div id="stepsD"></div>
         </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
-        <p class="footer-text">
-            <strong style="color: var(--accent);">Jean-Marc Taouo</strong> - OPT IM GROUP<br>
-            Conciergerie novatrice - 200+ proprietes a Paris<br><br>
-            <a href="mailto:contactoptgroup@gmail.com">contactoptgroup@gmail.com</a> |
-            <a href="tel:+33612784932">+33 6 12 78 49 32</a>
-        </p>
+        <p class="footer-text"><strong style="color:var(--accent)">Jean-Marc Taouo</strong> - OPT IM GROUP<br><a href="mailto:contactoptgroup@gmail.com">contactoptgroup@gmail.com</a></p>
     </footer>
 
-    <!-- RESET BUTTON -->
-    <button class="reset-btn" onclick="resetProgress()" title="Reinitialiser la progression">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
-        </svg>
+    <button class="reset-btn" onclick="resetProgress()" title="Reset">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
     </button>
 
     <script>
-        // ============ DATA ============
-        const checklistData = {
-            A: [
-                { id: 'a1', title: 'Creer la structure du projet', desc: 'Dossiers, fichiers de base, configuration', tags: ['easy'], priority: true },
-                { id: 'a2', title: 'Developper index.html complet', desc: 'HTML principal avec design, navigation, modals', tags: ['medium'] },
-                { id: 'a3', title: 'Implementer le systeme multi-langues', desc: 'Support FR/EN avec detection automatique', tags: ['medium'] },
-                { id: 'a4', title: 'Configurer la PWA', desc: 'manifest.json, service worker, mode offline', tags: ['easy'] },
-                { id: 'a5', title: 'Creer apartments.json', desc: 'Configuration des donnees par appartement', tags: ['easy'] },
-                { id: 'a6', title: 'Generer les QR codes', desc: 'Un QR code par appartement pointant vers la Guest App', tags: ['easy'] },
-                { id: 'a7', title: 'Deployer sur Vercel', desc: 'Mise en production gratuite', tags: ['easy'] },
-                { id: 'a8', title: 'Configurer le domaine custom', desc: 'guest.optimigroup.fr (optionnel)', tags: ['easy'] },
-                { id: 'a9', title: 'Tester sur mobile', desc: 'Verification responsive et PWA installable', tags: ['easy'] },
-                { id: 'a10', title: 'Former l\'equipe', desc: 'Documentation pour ajouter de nouveaux appartements', tags: ['easy'] }
-            ],
-            B: [
-                { id: 'b1', title: 'Creer un compte Supabase', desc: 'Inscription et configuration du projet', tags: ['easy'], priority: true },
-                { id: 'b2', title: 'Executer les scripts SQL', desc: 'Creation des tables apartments, services, analytics', tags: ['medium'] },
-                { id: 'b3', title: 'Configurer Row Level Security', desc: 'Securiser l\'acces aux donnees', tags: ['medium'] },
-                { id: 'b4', title: 'Migrer apartments.json vers Supabase', desc: 'Import des donnees existantes', tags: ['easy'] },
-                { id: 'b5', title: 'Adapter index.html pour chargement dynamique', desc: 'Integration de l\'API Supabase', tags: ['medium'] },
-                { id: 'b6', title: 'Creer le dashboard admin - Auth', desc: 'Systeme de connexion admin', tags: ['hard'] },
-                { id: 'b7', title: 'Creer le dashboard admin - CRUD', desc: 'Gestion des appartements', tags: ['hard'] },
-                { id: 'b8', title: 'Implementer l\'upload photos', desc: 'Stockage dans Supabase Storage', tags: ['medium'] },
-                { id: 'b9', title: 'Ajouter les analytics', desc: 'Tracking des vues et interactions', tags: ['medium'] },
-                { id: 'b10', title: 'Tests et deploiement', desc: 'Verification complete et mise en production', tags: ['easy'] }
-            ],
-            C: [
-                { id: 'c1', title: 'Lister les criteres d\'evaluation', desc: 'Prix, fonctionnalites, support, integration', tags: ['easy'], priority: true },
-                { id: 'c2', title: 'Analyser Duve', desc: 'Demo, pricing, fonctionnalites detaillees', tags: ['easy'] },
-                { id: 'c3', title: 'Analyser Chekin', desc: 'Demo, pricing, conformite legale France', tags: ['easy'] },
-                { id: 'c4', title: 'Analyser Hostaway', desc: 'Demo, pricing, channel manager', tags: ['easy'] },
-                { id: 'c5', title: 'Analyser Guesty', desc: 'Demo, pricing, solution enterprise', tags: ['easy'] },
-                { id: 'c6', title: 'Comparer les prix pour 30 appartements', desc: 'Tableau comparatif detaille', tags: ['easy'] },
-                { id: 'c7', title: 'Tester la solution choisie', desc: 'Trial period avec 2-3 appartements', tags: ['medium'] },
-                { id: 'c8', title: 'Evaluer le ROI', desc: 'Cout vs gains (upselling, temps gagne)', tags: ['medium'] },
-                { id: 'c9', title: 'Decision finale', desc: 'Choix de la solution ou passage a Option D', tags: ['easy'] }
-            ],
-            D: [
-                { id: 'd1', title: 'Valider l\'Option B comme base', desc: 'S\'assurer que Supabase fonctionne', tags: ['easy'], priority: true },
-                { id: 'd2', title: 'Phase 1: Guest App complete', desc: 'Toutes les fonctionnalites core', tags: ['hard'] },
-                { id: 'd3', title: 'Phase 2: Admin Dashboard', desc: 'CRUD complet, upload, QR codes', tags: ['hard'] },
-                { id: 'd4', title: 'Integrer Stripe pour les paiements', desc: 'Services payants et abonnements', tags: ['hard'] },
-                { id: 'd5', title: 'Phase 3: Catalogue services', desc: 'Early check-in, menage, transfert', tags: ['medium'] },
-                { id: 'd6', title: 'Implementer les notifications', desc: 'Email et WhatsApp pour les demandes', tags: ['medium'] },
-                { id: 'd7', title: 'Phase 4: Widget reservation', desc: 'Calendrier, disponibilites, paiement', tags: ['hard'] },
-                { id: 'd8', title: 'Sync iCal avec Airbnb/Booking', desc: 'Import/export des calendriers', tags: ['hard'] },
-                { id: 'd9', title: 'Phase 5: Architecture multi-tenant', desc: 'Support de plusieurs organisations', tags: ['hard'] },
-                { id: 'd10', title: 'Systeme d\'inscription et facturation', desc: 'Plans Starter/Pro/Business/Enterprise', tags: ['hard'] },
-                { id: 'd11', title: 'Custom domains et white-label', desc: 'Personnalisation complete par client', tags: ['hard'] },
-                { id: 'd12', title: 'API publique', desc: 'Documentation et endpoints pour integration', tags: ['hard'] },
-                { id: 'd13', title: 'Beta test avec partenaires', desc: '2-3 conciergeries pour feedback', tags: ['medium'] },
-                { id: 'd14', title: 'Lancement public', desc: 'Marketing et acquisition premiers clients', tags: ['medium'] }
-            ]
-        };
+const D = {
+A: [
+{id:'a1',title:'Creer la structure du projet',desc:'Dossiers et fichiers de base',tags:['easy'],priority:true,
+prompt:`Cree la structure de projet pour une Guest App Airbnb statique:
 
-        // ============ STATE ============
-        let completedTasks = JSON.parse(localStorage.getItem('optimi-tasks') || '{}');
+STRUCTURE:
+- index.html (page principale)
+- apartments.json (donnees)
+- manifest.json (PWA)
+- sw.js (service worker)
+- css/styles.css
+- js/app.js
+- images/
 
-        // ============ FUNCTIONS ============
-        function initChecklists() {
-            Object.keys(checklistData).forEach(option => {
-                const container = document.getElementById(`checklist${option}`);
-                if (!container) return;
+DESIGN: Dark theme moderne
+- Background: #0a0a0b
+- Accent: #ff6b35
+- Gold: #d4af37
 
-                container.innerHTML = checklistData[option].map(item => `
-                    <div class="checklist-item ${completedTasks[item.id] ? 'completed' : ''}" onclick="toggleTask('${item.id}', '${option}')">
-                        <div class="checklist-checkbox">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
-                            </svg>
+Deploiement prevu sur Vercel (gratuit).
+Cree tous les fichiers avec contenu fonctionnel.`,
+code:{lang:'bash',content:`mkdir optimi-guest-app && cd optimi-guest-app
+mkdir css js images
+touch index.html apartments.json manifest.json sw.js
+touch css/styles.css js/app.js`}},
+
+{id:'a2',title:'Developper index.html complet',desc:'HTML avec toutes les sections',tags:['medium'],
+prompt:`Cree index.html pour la Guest App OPTIMI:
+
+SECTIONS:
+1. Hero (nom appartement + photo)
+2. WiFi (nom + mdp + bouton copier)
+3. Check-in (heure, instructions, codes)
+4. Check-out (heure, instructions)
+5. Quartier (POI avec liens Google Maps)
+6. Services payants (early check-in, menage)
+7. Reglement interieur
+8. Contact hote
+
+DESIGN: Dark theme, mobile-first, navigation sticky, modals.
+Donnees chargees depuis apartments.json.`,
+code:{lang:'json',content:`{
+  "tour-eiffel": {
+    "name": "Appartement Tour Eiffel",
+    "address": "15 Avenue de Suffren, 75007 Paris",
+    "wifi": {"name": "OPTIMI_Guest_5G", "password": "Welcome2024!"},
+    "checkin": {"time": "15:00", "instructions": ["Code boite: 1234#", "3eme gauche"]},
+    "checkout": {"time": "11:00", "instructions": ["Cles dans boite", "Fenetres fermees"]},
+    "host": {"name": "Jean-Marc", "phone": "+33612784932"}
+  }
+}`}},
+
+{id:'a3',title:'Systeme multi-langues FR/EN',desc:'Detection auto + switch manuel',tags:['medium'],
+prompt:`Ajoute le multi-langues (FR/EN) a la Guest App:
+
+1. Detection langue navigateur
+2. Bouton switch FR/EN dans header
+3. Sauvegarde preference localStorage
+4. Traduction tous textes statiques
+
+Implementation: objet translations, fonction setLanguage(lang), attributs data-i18n.
+Fournis le code JS complet.`,
+code:{lang:'js',content:`const translations = {
+  fr: {welcome:"Bienvenue",wifi:"WiFi",copy:"Copier",copied:"Copie!",checkin:"Arrivee",checkout:"Depart"},
+  en: {welcome:"Welcome",wifi:"WiFi",copy:"Copy",copied:"Copied!",checkin:"Check-in",checkout:"Check-out"}
+};
+
+function setLanguage(lang) {
+  localStorage.setItem('lang', lang);
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = translations[lang][el.dataset.i18n] || el.textContent;
+  });
+}`}},
+
+{id:'a4',title:'Configurer PWA',desc:'manifest.json + service worker',tags:['easy'],
+prompt:`Configure la PWA pour OPTIMI Guest App:
+
+1. manifest.json complet (icons, colors, display standalone)
+2. Service Worker avec cache assets + offline fallback
+3. Registration dans index.html
+
+theme_color et background_color: #0a0a0b`,
+code:{lang:'json',content:`{
+  "name": "OPTIMI Guest App",
+  "short_name": "OPTIMI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0b",
+  "theme_color": "#0a0a0b",
+  "icons": [
+    {"src": "images/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "images/icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ]
+}`}},
+
+{id:'a5',title:'Deployer sur Vercel',desc:'Push GitHub + deploy Vercel',tags:['easy'],
+prompt:`Guide pour deployer sur Vercel:
+
+1. git init && git add . && git commit
+2. Creer repo GitHub
+3. Push
+4. Connecter Vercel a GitHub
+5. Auto-deploy a chaque push`,
+code:{lang:'bash',content:`git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/USER/optimi-guest-app.git
+git push -u origin master
+
+# Puis sur vercel.com: Import from GitHub`}}
+],
+
+B: [
+{id:'b1',title:'Creer projet Supabase',desc:'Inscription + credentials',tags:['easy'],priority:true,
+prompt:`Guide pour creer un projet Supabase:
+
+1. supabase.com > New Project
+2. Name: optimi-guest-app
+3. Region: eu-west-2 (Paris)
+4. Attendre creation (~2min)
+5. Settings > API > Copier:
+   - Project URL
+   - anon public key
+   - service_role key (admin)`,
+code:{lang:'js',content:`// config.js
+const SUPABASE_URL = 'https://xxxxx.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOi...';
+// NE PAS commiter le service_role key!`}},
+
+{id:'b2',title:'Creer les tables SQL',desc:'Schema apartments, services, analytics',tags:['medium'],
+prompt:`Execute ce SQL dans Supabase SQL Editor pour creer les tables:`,
+code:{lang:'sql',content:`CREATE TABLE apartments (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    slug VARCHAR(100) UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    address TEXT,
+    wifi_name VARCHAR(100),
+    wifi_password VARCHAR(100),
+    checkin_time TIME DEFAULT '15:00',
+    checkin_instructions JSONB DEFAULT '[]',
+    checkout_time TIME DEFAULT '11:00',
+    checkout_instructions JSONB DEFAULT '[]',
+    host_name VARCHAR(100),
+    host_phone VARCHAR(20),
+    status VARCHAR(20) DEFAULT 'active',
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_apartments_slug ON apartments(slug);
+
+CREATE TABLE services_requests (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    apartment_id UUID REFERENCES apartments(id),
+    service_type VARCHAR(50),
+    guest_name VARCHAR(100),
+    guest_email VARCHAR(100),
+    status VARCHAR(20) DEFAULT 'pending',
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE analytics (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    apartment_id UUID REFERENCES apartments(id),
+    event_type VARCHAR(50),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);`}},
+
+{id:'b3',title:'Configurer Row Level Security',desc:'Securite acces donnees',tags:['medium'],
+prompt:`Configure RLS dans Supabase pour:
+- apartments: lecture publique, CRUD admin
+- services_requests: insert public, read admin
+- analytics: insert public, read admin`,
+code:{lang:'sql',content:`ALTER TABLE apartments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE services_requests ENABLE ROW LEVEL SECURITY;
+ALTER TABLE analytics ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Public read apartments" ON apartments
+    FOR SELECT USING (status = 'active');
+
+CREATE POLICY "Admin full access" ON apartments
+    FOR ALL USING (auth.role() = 'authenticated');
+
+CREATE POLICY "Public insert services" ON services_requests
+    FOR INSERT WITH CHECK (true);
+
+CREATE POLICY "Admin read services" ON services_requests
+    FOR SELECT USING (auth.role() = 'authenticated');
+
+CREATE POLICY "Public insert analytics" ON analytics
+    FOR INSERT WITH CHECK (true);`}},
+
+{id:'b4',title:'Integrer Supabase dans Guest App',desc:'Client JS + chargement dynamique',tags:['medium'],
+prompt:`Modifie la Guest App pour charger les donnees depuis Supabase au lieu du JSON statique.
+
+Le slug appartement vient de l'URL: /tour-eiffel ou /?apt=tour-eiffel`,
+code:{lang:'js',content:`import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+async function loadApartment(slug) {
+    const { data, error } = await supabase
+        .from('apartments')
+        .select('*')
+        .eq('slug', slug)
+        .eq('status', 'active')
+        .single();
+    return error ? null : data;
+}
+
+async function trackEvent(apartmentId, eventType) {
+    await supabase.from('analytics').insert({
+        apartment_id: apartmentId,
+        event_type: eventType
+    });
+}
+
+// Init
+const slug = location.pathname.slice(1) || new URLSearchParams(location.search).get('apt');
+const apt = await loadApartment(slug);
+if (apt) renderApp(apt);`}},
+
+{id:'b5',title:'Creer Dashboard Admin',desc:'Auth + CRUD appartements',tags:['hard'],
+prompt:`Cree un dashboard admin dans /admin avec:
+
+PAGES:
+- login.html (Supabase Auth email/password)
+- index.html (stats)
+- apartments.html (liste + CRUD)
+- services.html (demandes)
+
+FONCTIONNALITES:
+- Auth check sur chaque page
+- CRUD appartements
+- Upload photos Supabase Storage
+- Generation QR codes`,
+code:{lang:'js',content:`// admin/js/auth.js
+async function checkAuth() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) window.location.href = 'login.html';
+    return user;
+}
+
+async function login(email, password) {
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (!error) window.location.href = 'index.html';
+    return error;
+}
+
+// admin/js/api.js
+async function getApartments() {
+    return supabase.from('apartments').select('*').order('created_at', { ascending: false });
+}
+
+async function createApartment(data) {
+    return supabase.from('apartments').insert(data).select().single();
+}
+
+async function updateApartment(id, data) {
+    return supabase.from('apartments').update(data).eq('id', id);
+}
+
+async function deleteApartment(id) {
+    return supabase.from('apartments').delete().eq('id', id);
+}`}},
+
+{id:'b6',title:'Migrer donnees existantes',desc:'Import JSON vers Supabase',tags:['easy'],
+prompt:`Script pour migrer apartments.json vers Supabase.
+Utilise le service_role key pour bypass RLS.`,
+code:{lang:'js',content:`// migration.js (Node.js)
+import { createClient } from '@supabase/supabase-js';
+import fs from 'fs';
+
+const supabase = createClient(URL, SERVICE_KEY);
+const data = JSON.parse(fs.readFileSync('apartments.json'));
+
+for (const [slug, apt] of Object.entries(data)) {
+    await supabase.from('apartments').insert({
+        slug,
+        name: apt.name,
+        address: apt.address,
+        wifi_name: apt.wifi?.name,
+        wifi_password: apt.wifi?.password,
+        checkin_time: apt.checkin?.time,
+        checkin_instructions: apt.checkin?.instructions,
+        checkout_time: apt.checkout?.time,
+        host_name: apt.host?.name,
+        host_phone: apt.host?.phone
+    });
+    console.log('Migrated:', slug);
+}`}}
+],
+
+C: [
+{id:'c1',title:'Criteres evaluation SaaS',desc:'Grille de comparaison',tags:['easy'],priority:true,
+prompt:`Cree une grille d'evaluation pour comparer les SaaS Guest App:
+
+CRITERES (poids):
+- Prix 30 apparts (25%)
+- Qualite Guest App (20%)
+- Admin Dashboard (15%)
+- Integrations (10%)
+- Reservation directe (10%)
+- Multi-langues (5%)
+- Support FR (5%)
+- White-label (10%)
+
+Format: tableau avec notes 1-5 par critere.`,
+code:{lang:'text',content:`| Critere           | Poids | Duve | Chekin | Hostaway | Custom |
+|-------------------|-------|------|--------|----------|--------|
+| Prix (30 apparts) | 25%   | 3    | 5      | 2        | 5      |
+| Guest App         | 20%   | 5    | 3      | 3        | 4      |
+| Admin Dashboard   | 15%   | 4    | 3      | 4        | 4      |
+| Integrations      | 10%   | 4    | 3      | 5        | 3      |
+| Reservation       | 10%   | 4    | 1      | 5        | 4      |
+| White-label       | 10%   | 2    | 1      | 2        | 5      |
+|-------------------|-------|------|--------|----------|--------|
+| SCORE             | 100%  | 3.6  | 2.9    | 3.2      | 4.3    |`}},
+
+{id:'c2',title:'Analyser Duve',desc:'Demo, pricing, fonctionnalites',tags:['easy'],
+prompt:`Analyse complete de Duve (duve.com) pour 30 appartements Paris:
+
+1. Demander demo
+2. Tester Guest App
+3. Explorer dashboard
+4. Calculer cout mensuel exact
+5. Lister fonctionnalites
+6. Identifier limitations
+
+Resume: forces, faiblesses, recommandation.`,
+code:{lang:'text',content:`DUVE - ANALYSE
+
+Prix 30 apparts: ~360 EUR/mois (12 EUR/listing)
+Setup: Gratuit
+
+FONCTIONNALITES:
+[x] Guest App PWA
+[x] Check-in digital
+[x] Upselling services
+[x] Multi-langues 30+
+[x] Integrations Airbnb/Booking
+[ ] White-label complet
+
+VERDICT: Recommande moyen terme
+ROI: Upselling ~50 EUR/guest compense le cout`}},
+
+{id:'c3',title:'Analyser Chekin',desc:'Alternative budget',tags:['easy'],
+prompt:`Analyse Chekin (chekin.com) pour 30 appartements:
+
+Focus: conformite legale France, check-in digital, prix.
+Comparer avec Duve.`,
+code:{lang:'text',content:`CHEKIN - ANALYSE
+
+Prix 30 apparts: ~150 EUR/mois (5 EUR/listing)
+
+CONFORMITE FRANCE:
+[x] Declaration police auto
+[x] Taxe sejour
+[x] Verification ID
+[x] Signature contrat
+
+vs DUVE: Guest App moins riche, 60% moins cher`}},
+
+{id:'c4',title:'Decision finale',desc:'Choix ou passage Option D',tags:['easy'],
+prompt:`Decision basee sur l'analyse des SaaS:
+
+OPTIONS:
+A) Rester Option A (gratuit) + dev Option B
+B) Chekin 150 EUR/mois (budget)
+C) Duve 360 EUR/mois (qualite)
+D) Dev SaaS custom (investissement)
+
+Quelle strategie pour OPT IM GROUP?`,
+code:{lang:'text',content:`RECOMMANDATION:
+
+COURT TERME (0-3 mois):
+-> Option A + B = ~25 EUR/mois
+
+MOYEN TERME (3-12 mois):
+-> Chekin si besoin conformite urgente
+
+LONG TERME (12+ mois):
+-> Option D SaaS custom
+   Economies 5K EUR/an + revenus 50K EUR/an
+
+VERDICT: Commencer B, puis D`}}
+],
+
+D: [
+{id:'d1',title:'Valider Option B',desc:'Base technique fonctionnelle',tags:['easy'],priority:true,
+prompt:`Avant Option D, verifier que Option B est complete:
+
+[ ] Projet Supabase OK
+[ ] Tables creees
+[ ] RLS configure
+[ ] Guest App charge depuis Supabase
+[ ] Dashboard admin basique
+[ ] 3+ appartements migres`,
+code:{lang:'bash',content:`# Test rapide
+curl "https://xxxxx.supabase.co/rest/v1/apartments?status=eq.active" \\
+  -H "apikey: ANON_KEY"`}},
+
+{id:'d2',title:'Architecture multi-tenant',desc:'Schema DB plusieurs organisations',tags:['hard'],
+prompt:`Transformer DB en multi-tenant:
+
+1. Table organizations (tenants)
+2. organization_id sur toutes tables
+3. RLS filtre par organization
+4. Custom domains par orga`,
+code:{lang:'sql',content:`CREATE TABLE organizations (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    slug VARCHAR(50) UNIQUE NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    plan VARCHAR(20) DEFAULT 'free',
+    custom_domain VARCHAR(255),
+    branding JSONB DEFAULT '{"primary_color": "#ff6b35"}',
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE apartments ADD COLUMN organization_id UUID REFERENCES organizations(id);
+CREATE INDEX idx_apartments_org ON apartments(organization_id);
+
+DROP POLICY IF EXISTS "Public read apartments" ON apartments;
+CREATE POLICY "Tenant read apartments" ON apartments
+    FOR SELECT USING (
+        status = 'active' AND
+        organization_id IN (SELECT id FROM organizations WHERE plan != 'suspended')
+    );`}},
+
+{id:'d3',title:'Systeme facturation Stripe',desc:'Plans et abonnements',tags:['hard'],
+prompt:`Implemente Stripe Billing:
+
+PLANS:
+- Starter: Gratuit (1 listing)
+- Pro: 29 EUR/mois (10 listings)
+- Business: 79 EUR/mois (30 listings)
+- Enterprise: 199 EUR/mois (illimite)
+
+Checkout, Customer Portal, Webhooks.`,
+code:{lang:'js',content:`// Edge Function create-checkout
+import Stripe from 'stripe';
+
+const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY'));
+
+const PLANS = {
+    pro: 'price_xxx',      // 29 EUR
+    business: 'price_xxx', // 79 EUR
+    enterprise: 'price_xxx' // 199 EUR
+};
+
+export default async (req) => {
+    const { plan, orgId } = await req.json();
+
+    const session = await stripe.checkout.sessions.create({
+        mode: 'subscription',
+        line_items: [{ price: PLANS[plan], quantity: 1 }],
+        success_url: 'https://app.optimiguest.com/billing/success',
+        metadata: { organization_id: orgId }
+    });
+
+    return new Response(JSON.stringify({ url: session.url }));
+};`}},
+
+{id:'d4',title:'Custom domains & white-label',desc:'Domaines par client',tags:['hard'],
+prompt:`Support custom domains:
+
+1. Chaque orga configure son domaine
+2. Detection tenant par domaine
+3. Branding complet (logo, couleurs)
+4. Wildcard SSL via Vercel/Cloudflare`,
+code:{lang:'js',content:`// pages/api/tenant.js
+export default async function handler(req, res) {
+    const host = req.headers.host;
+
+    const { data: org } = await supabase
+        .from('organizations')
+        .select('*')
+        .or(\`custom_domain.eq.\${host},slug.eq.\${host.split('.')[0]}\`)
+        .single();
+
+    if (!org) return res.status(404).json({ error: 'Not found' });
+
+    // Appliquer branding
+    res.setHeader('X-Org-ID', org.id);
+    // ...
+}`}},
+
+{id:'d5',title:'API publique',desc:'REST API documentee',tags:['hard'],
+prompt:`Cree une API REST publique:
+
+ENDPOINTS:
+- GET /api/v1/apartments
+- GET /api/v1/apartments/:slug
+- POST /api/v1/services
+- GET /api/v1/analytics (admin)
+
+Securite: API Keys, rate limiting, CORS.
+Documentation OpenAPI/Swagger.`,
+code:{lang:'js',content:`// Edge Function api
+export default async (req) => {
+    const apiKey = req.headers.get('X-API-Key');
+    if (!apiKey) return new Response('API key required', { status: 401 });
+
+    const { data: key } = await supabase
+        .from('api_keys')
+        .select('organization_id')
+        .eq('key', apiKey)
+        .eq('active', true)
+        .single();
+
+    if (!key) return new Response('Invalid API key', { status: 401 });
+
+    const url = new URL(req.url);
+
+    if (url.pathname === '/api/v1/apartments') {
+        const { data } = await supabase
+            .from('apartments')
+            .select('slug, name, address')
+            .eq('organization_id', key.organization_id);
+        return Response.json({ data });
+    }
+    // ...
+};`}},
+
+{id:'d6',title:'Lancement beta',desc:'2-3 conciergeries partenaires',tags:['medium'],
+prompt:`Plan lancement beta OPTIMI Guest:
+
+BETA TESTERS:
+- 2-3 conciergeries du reseau SuperHote
+- 3 mois gratuits contre feedback
+- Onboarding assiste
+
+OBJECTIFS:
+- 50+ appartements
+- NPS > 8
+- 2 temoignages video
+
+MARKETING:
+- Landing page waitlist
+- Contenu LinkedIn
+- Demo video`,
+code:{lang:'text',content:`PLAN BETA - 3 MOIS
+
+SEMAINE 1-2:
+[ ] Landing page optimiguest.com
+[ ] Demo video 2min
+[ ] Documentation
+
+SEMAINE 3-4:
+[ ] Contacter 5 conciergeries
+[ ] Objectif: 3 sign-ups
+[ ] Offre: 3 mois gratuits
+
+MOIS 2:
+[ ] Onboarding 1h/beta
+[ ] Support WhatsApp VIP
+[ ] Migration appartements
+
+MOIS 3:
+[ ] Feedback hebdo
+[ ] Bug fixes
+[ ] Collecte temoignages
+
+LANCEMENT PUBLIC: Fin mois 3`}}
+]
+};
+
+let done = JSON.parse(localStorage.getItem('opt-tasks-v3') || '{}');
+let expanded = {};
+
+function render(o) {
+    const c = document.getElementById('steps' + o);
+    if (!c) return;
+    c.innerHTML = D[o].map((s, i) => `
+        <div class="step-item ${done[s.id] ? 'completed' : ''} ${expanded[s.id] ? 'expanded' : ''}" data-id="${s.id}">
+            <div class="step-header">
+                <div class="step-checkbox" onclick="event.stopPropagation();toggle('${s.id}','${o}')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div class="step-content" onclick="expand('${s.id}','${o}')">
+                    <div class="step-num">Etape ${i+1}</div>
+                    <div class="step-title">${s.title}</div>
+                    <div class="step-desc">${s.desc}</div>
+                    <div class="step-tags">${s.priority?'<span class="step-tag priority">Prioritaire</span>':''}${s.tags.map(t=>'<span class="step-tag '+t+'">'+t+'</span>').join('')}</div>
+                </div>
+                <button class="step-expand" onclick="event.stopPropagation();expand('${s.id}','${o}')">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                </button>
+            </div>
+            <div class="step-docs">
+                <div class="docs-section">
+                    <div class="prompt-block">
+                        <div class="prompt-header">
+                            <span class="prompt-label">PROMPT POUR CLAUDE</span>
+                            <button class="prompt-copy" onclick="copyP(this,'${s.id}')">Copier</button>
                         </div>
-                        <div class="checklist-content">
-                            <div class="checklist-title">${item.title}</div>
-                            <div class="checklist-desc">${item.desc}</div>
-                            <div class="checklist-meta">
-                                ${item.priority ? '<span class="checklist-tag priority">Prioritaire</span>' : ''}
-                                ${item.tags.map(tag => `<span class="checklist-tag ${tag}">${tag}</span>`).join('')}
-                            </div>
-                        </div>
+                        <div class="prompt-content" id="p-${s.id}">${esc(s.prompt)}</div>
                     </div>
-                `).join('');
-            });
-        }
+                </div>
+                ${s.code ? `
+                <div class="docs-section">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span class="code-lang">${s.code.lang.toUpperCase()}</span>
+                            <button class="code-copy" onclick="copyC(this,'${s.id}')">Copier</button>
+                        </div>
+                        <div class="code-content"><pre id="c-${s.id}">${esc(s.code.content)}</pre></div>
+                    </div>
+                </div>
+                ` : ''}
+            </div>
+        </div>
+    `).join('');
+}
 
-        function toggleTask(taskId, option) {
-            completedTasks[taskId] = !completedTasks[taskId];
-            localStorage.setItem('optimi-tasks', JSON.stringify(completedTasks));
-            initChecklists();
-            updateProgress();
-        }
+function esc(t) {
+    const d = document.createElement('div');
+    d.textContent = t;
+    return d.innerHTML;
+}
 
-        function updateProgress() {
-            let totalCompleted = 0;
-            let totalTasks = 0;
+function toggle(id, o) {
+    done[id] = !done[id];
+    localStorage.setItem('opt-tasks-v3', JSON.stringify(done));
+    render(o);
+    upd();
+}
 
-            Object.keys(checklistData).forEach(option => {
-                const tasks = checklistData[option];
-                const completed = tasks.filter(t => completedTasks[t.id]).length;
-                const total = tasks.length;
-                const percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+function expand(id, o) {
+    expanded[id] = !expanded[id];
+    render(o);
+}
 
-                totalCompleted += completed;
-                totalTasks += total;
+function copyP(btn, id) {
+    navigator.clipboard.writeText(document.getElementById('p-' + id).textContent);
+    btn.textContent = 'Copie!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copier'; btn.classList.remove('copied'); }, 2000);
+}
 
-                // Update option-specific progress
-                const progressBar = document.getElementById(`progress${option}`);
-                const progressText = document.getElementById(`progress${option}Text`);
-                const progressPercent = document.getElementById(`progress${option}Percent`);
-                const optionBar = document.getElementById(`option${option}Bar`);
-                const optionPercent = document.getElementById(`option${option}Percent`);
+function copyC(btn, id) {
+    navigator.clipboard.writeText(document.getElementById('c-' + id).textContent);
+    btn.textContent = 'Copie!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copier'; btn.classList.remove('copied'); }, 2000);
+}
 
-                if (progressBar) progressBar.style.width = `${percent}%`;
-                if (progressText) progressText.textContent = `${completed}/${total} etapes`;
-                if (progressPercent) progressPercent.textContent = `${percent}%`;
-                if (optionBar) optionBar.style.width = `${percent}%`;
-                if (optionPercent) optionPercent.textContent = `${percent}%`;
-            });
+function upd() {
+    let tc = 0, tt = 0;
+    ['A','B','C','D'].forEach(o => {
+        const s = D[o], c = s.filter(x => done[x.id]).length, t = s.length, p = t ? Math.round(c/t*100) : 0;
+        tc += c; tt += t;
+        const bar = document.getElementById('prg' + o);
+        const txt = document.getElementById('prg' + o + 'T');
+        const pct = document.getElementById('prg' + o + 'P');
+        const obar = document.getElementById('opt' + o + 'Bar');
+        const opct = document.getElementById('opt' + o + 'Pct');
+        if (bar) bar.style.width = p + '%';
+        if (txt) txt.textContent = c + '/' + t;
+        if (pct) pct.textContent = p + '%';
+        if (obar) obar.style.width = p + '%';
+        if (opct) opct.textContent = p + '%';
+    });
+    const gp = tt ? Math.round(tc/tt*100) : 0;
+    document.getElementById('globalFill').style.width = gp + '%';
+    document.getElementById('globalText').textContent = gp + '%';
+}
 
-            // Update global progress
-            const globalPercent = totalTasks > 0 ? Math.round((totalCompleted / totalTasks) * 100) : 0;
-            document.getElementById('globalProgressFill').style.width = `${globalPercent}%`;
-            document.getElementById('globalProgressText').textContent = `${globalPercent}%`;
-            document.getElementById('totalCompleted').textContent = totalCompleted;
-            document.getElementById('totalTasks').textContent = totalTasks;
-        }
+function navigateTo(id) {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.section === id));
+    document.querySelectorAll('.section').forEach(s => s.classList.toggle('active', s.id === id));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-        function navigateTo(sectionId) {
-            // Update nav
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.toggle('active', item.dataset.section === sectionId);
-            });
+function resetProgress() {
+    if (confirm('Reinitialiser?')) {
+        localStorage.removeItem('opt-tasks-v3');
+        done = {};
+        expanded = {};
+        ['A','B','C','D'].forEach(render);
+        upd();
+    }
+}
 
-            // Update sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.toggle('active', section.id === sectionId);
-            });
-
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function resetProgress() {
-            if (confirm('Voulez-vous vraiment reinitialiser toute la progression ?')) {
-                localStorage.removeItem('optimi-tasks');
-                completedTasks = {};
-                initChecklists();
-                updateProgress();
-            }
-        }
-
-        // ============ EVENT LISTENERS ============
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', () => {
-                navigateTo(item.dataset.section);
-            });
-        });
-
-        // ============ INIT ============
-        initChecklists();
-        updateProgress();
+document.querySelectorAll('.nav-item').forEach(n => n.addEventListener('click', () => navigateTo(n.dataset.section)));
+['A','B','C','D'].forEach(render);
+upd();
     </script>
 </body>
 </html>
